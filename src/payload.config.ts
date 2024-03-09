@@ -22,7 +22,11 @@ export default buildConfig({
   graphQL: {
     schemaOutputFile: path.resolve(__dirname, 'generated-schema.graphql'),
   },
+  serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
+
   plugins: [payloadCloud()],
+  cors: "*",
+
   db: mongooseAdapter({
     url: process.env.DATABASE_URI,
   }),
