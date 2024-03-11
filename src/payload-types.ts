@@ -9,6 +9,9 @@
 export interface Config {
   collections: {
     users: User;
+    saleorvariants: Saleorvariant;
+    products: Product;
+    variants: Variant;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
@@ -35,6 +38,64 @@ export interface User {
   loginAttempts?: number | null;
   lockUntil?: string | null;
   password: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "saleorvariants".
+ */
+export interface Saleorvariant {
+  id: string;
+  variantId?: string | null;
+  variantName?: string | null;
+  productId?: string | null;
+  productName?: string | null;
+  productSlug?: string | null;
+  channels?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "products".
+ */
+export interface Product {
+  id: string;
+  productId?: string | null;
+  name?: string | null;
+  productSlug?: string | null;
+  extrafield?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "variants".
+ */
+export interface Variant {
+  id: string;
+  variantId?: string | null;
+  variantName?: string | null;
+  productId: string | Product;
+  channels?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  extraone?: string | null;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
